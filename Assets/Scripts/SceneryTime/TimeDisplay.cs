@@ -1,38 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
 using System;
+using TMPro;
+using UnityEngine;
 
 namespace WorldTime
 {
-    [RequireComponent(typeof(TMPro.TextMeshProUGUI))]
     public class TimeDisplay : MonoBehaviour
     {
         [SerializeField]
         private WorldTime _worldTime;
-        private TMPro.TextMeshProUGUI _text;
 
-        // Start is called before the first frame update
+        [SerializeField]
+        private TextMeshProUGUI _timeText;
+
+        [SerializeField]
+        private TextMeshProUGUI _dayText;
+
         private void Awake()
         {
-            _text = GetComponent<TMPro.TextMeshProUGUI>();
             _worldTime.WorldTimeChanged += OnWorldTimeChanged;
         }
 
         private void OnWorldTimeChanged(object sender, TimeSpan newTime)
         {
-            _text.SetText(newTime.ToString(@"hh\:mm"));
+            _timeText.SetText(newTime.ToString(@"hh\:mm"));
+
+            int day = (int)newTime.TotalDays + 1;
+
+            _dayText.SetText($"0{day}");
         }
 
         private void OnDestroy()
         {
-            _worldTime.WorldTimeChanged -= OnWorldTimeChanged;
-        }
-        // Update is called once per frame
-        void Update()
-        {
-            
+            if (_worldTime != null)
+            {
+                _worldTime.WorldTimeChanged -= OnWorldTimeChanged;
+            }
         }
     }
 }
