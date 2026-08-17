@@ -66,8 +66,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BaseToggle.cs" />
     <Compile Include="Assets\Scripts\SceneryTime\WorldLight.cs" />
-    <Compile Include="Assets\Scripts\TaskLabel.cs" />
+    <Compile Include="Assets\Scripts\Task\TaskItem.cs" />
     <Compile Include="Assets\Scripts\SceneryTime\WorldTime.cs" />
+    <Compile Include="Assets\Scripts\Task\TaskController.cs" />
+    <Compile Include="Assets\Scripts\Task\TaskLabel.cs" />
     <Compile Include="Assets\Scripts\SceneryTime\ConstantTime.cs" />
     <Compile Include="Assets\Scripts\SceneryTime\TimeDisplay.cs" />
   </ItemGroup>
